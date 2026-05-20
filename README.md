@@ -1,28 +1,30 @@
 # Home Lab Environment Portfolio
 
 ## About This Project
-I built this portfolio to document my hands-on experience in 
-cybersecurity through a personal home lab environment. Rather 
-than just studying concepts, I wanted to simulate real-world 
-attack scenarios, investigate them the way a professional analyst 
+I built this portfolio to document my hands-on experience in
+cybersecurity through a personal home lab environment. Rather
+than just studying concepts, I wanted to simulate real-world
+attack scenarios, investigate them the way a professional analyst
 would, and document my findings as case files.
 
-This is a living project — I add to it continuously as I build 
-new skills, run new simulations, and explore new areas of 
-cybersecurity.
+This portfolio is divided into two sections:
+- **Standalone Projects** — completed investigations and labs
+from my academic and personal work
+- **Home Lab** — an ongoing home lab environment simulating
+real-world attack scenarios end to end
 
 ---
 
 ## Who I Am
-I'm Daut Hadzijusufovic, a cybersecurity graduate from the 
-University of South Florida with a B.S. in Cybersecurity through 
-the Bellini College of Artificial Intelligence and Computing. 
-I'm passionate about network security, threat detection, and 
+I'm Daut Hadzijusufovic, a cybersecurity graduate from the
+University of South Florida with a B.S. in Cybersecurity through
+the Bellini College of Artificial Intelligence and Computing.
+I'm passionate about network security, threat detection, and
 security automation.
 
-📍 Palm Harbor, Florida  
-🔗 [LinkedIn](https://www.linkedin.com/in/daut-hadzijusufovic-195631233/)  
-📧 daut@usf.edu
+📍 Palm Harbor, Florida
+🔗 [LinkedIn](https://www.linkedin.com/in/daut-hadzijusufovic-195631233/)
+📧 hdaut6@hotmail.com
 
 ---
 
@@ -52,22 +54,34 @@ My home lab runs on VMware and consists of the following:
 
 ---
 
-## Case Files
+## Standalone Projects
 
-### Completed
-| # | Title | Skills Demonstrated |
-|---|---|---|
-| 01 | [OPNSense IDS/IPS Lab](./case-files/01-opnsense-ids-ips.md) | Network security, Suricata, IDS/IPS rule tuning |
-| 02 | [Network Forensics — HTB CTF](./case-files/02-htb-ctf-dancing-files.md) | Wireshark, PCAP analysis, credential discovery |
-| 03 | [Web App Attack — DVWA](./case-files/03-dvwa-command-injection.md) | Command injection, MySQL enumeration, OSINT |
+These are completed investigations and labs documenting
+real hands-on work across multiple areas of cybersecurity.
 
-### In Progress
-| # | Title | Phase |
+| # | Project | Skills Demonstrated | Status |
+|---|---|---|---|
+| 01 | [OPNSense IDS/IPS Lab](./standalone-projects/01-opnsense-ids-ips/) | Network security, Suricata, IDS/IPS rule tuning | ✅ Complete |
+| 02 | [HTB CTF — Network Forensics](./standalone-projects/02-htb-ctf/) | Wireshark, PCAP analysis, credential discovery | ✅ Complete |
+| 03 | [DVWA — Command Injection](./standalone-projects/03-dvwa-challenge/) | Command injection, MySQL enumeration | ✅ Complete |
+| 04 | [Blind SQL Injection](./standalone-projects/04-sql-injection/) | SQLMAP, Python, database exploitation | ✅ Complete |
+
+---
+
+## Home Lab
+
+An ongoing project simulating a real enterprise network
+environment. Attacks are executed, captured, analyzed, and
+documented as professional case files.
+
+| Phase | Title | Status |
 |---|---|---|
-| 04 | Reconnaissance Lab | Phase 1 |
-| 05 | Brute Force Detection | Phase 2 |
-| 06 | Data Exfiltration Simulation | Phase 3 |
-| 07 | AI-Automated Triage | Phase 4 |
+| 0 | Environment Setup | 🔄 In Progress |
+| 1 | Reconnaissance | ⏳ Not Started |
+| 2 | Brute Force Attack | ⏳ Not Started |
+| 3 | Data Exfiltration | ⏳ Not Started |
+| 4 | AI Automation Layer | ⏳ Not Started |
+| 5 | Portfolio Website | ⏳ Not Started |
 
 ---
 
