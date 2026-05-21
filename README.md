@@ -9,9 +9,9 @@ would, and document my findings as case files.
 
 This portfolio is divided into two sections:
 - **Standalone Projects** — completed investigations and labs
-from my academic and personal work
-- **Home Lab** — an ongoing home lab environment simulating
-real-world attack scenarios end to end
+demonstrating core cybersecurity skills
+- **Home Lab** — an ongoing environment simulating real-world
+attack scenarios end to end with AI automation
 
 ---
 
@@ -24,7 +24,7 @@ security automation.
 
 📍 Palm Harbor, Florida
 🔗 [LinkedIn](https://www.linkedin.com/in/daut-hadzijusufovic-195631233/)
-📧 hdaut6@hotmail.com
+📧 daut@usf.edu
 
 ---
 
@@ -45,9 +45,10 @@ My home lab runs on VMware and consists of the following:
 ## Tools & Technologies
 - **Network Analysis:** Wireshark, Nmap, Suricata
 - **SIEM:** Splunk
-- **Offensive:** Kali Linux, Hydra, Metasploit
+- **Offensive:** Kali Linux, Hydra, Metasploit, SQLMap
 - **Forensics:** Velociraptor, Ghidra
 - **Firewall/IDS:** OPNSense, Suricata
+- **Cryptography:** OpenSSL
 - **Automation:** Python, N8N
 - **Version Control:** Git, GitHub
 - **AI Integration:** Anthropic API *(coming soon)*
@@ -56,16 +57,20 @@ My home lab runs on VMware and consists of the following:
 
 ## Standalone Projects
 
-These are completed investigations and labs documenting
-real hands-on work across multiple areas of cybersecurity.
+Completed investigations and labs documenting hands-on work
+across multiple areas of cybersecurity. Each project is
+presented as a professional case file.
 
 | # | Project | Skills Demonstrated | Status |
 |---|---|---|---|
-| 01 | [OPNSense IDS/IPS Lab](./standalone-projects/01-opnsense-ids-ips/) | Network security, Suricata, IDS/IPS rule tuning | ✅ Complete |
+| 01 | [OPNSense IDS/IPS Lab](./standalone-projects/01-opnsense-ids-ips/) | Network security, Suricata, IDS/IPS | 🔄 In Progress |
 | 02 | [HTB CTF — Network Forensics](./standalone-projects/02-htb-ctf/) | Wireshark, PCAP analysis, credential discovery | ✅ Complete |
-| 03 | [DVWA — Command Injection](./standalone-projects/03-dvwa-challenge/) | Command injection, MySQL enumeration | ✅ Complete |
-| 04 | [Blind SQL Injection](./standalone-projects/04-sql-injection/) | SQLMAP, Python, database exploitation | ✅ Complete |
-
+| 03 | [Wireshark HTTP/FTP Analysis](./standalone-projects/03-wireshark-analysis/) | Protocol analysis, traffic inspection | ⏳ Pending |
+| 04 | [Nmap Reconnaissance](./standalone-projects/04-nmap-recon/) | Network scanning, vulnerability detection | ⏳ Pending |
+| 05 | [DVWA Command Injection](./standalone-projects/05-dvwa-command-injection/) | Web app attacks, command injection, MySQL | ⏳ Pending |
+| 06 | [SQL Injection & Blind SQL Injection](./standalone-projects/06-sql-injection/) | SQLMap, manual injection, database exploitation | ⏳ Pending |
+| 07 | [Password Cracking — Hydra](./standalone-projects/07-password-cracking/) | Brute force, dictionary attacks, Hydra | ⏳ Pending |
+| 08 | [Cryptography — OpenSSL](./standalone-projects/08-cryptography/) | Encryption, key pairs, hashing | ⏳ Pending |
 ---
 
 ## Home Lab

@@ -13,15 +13,16 @@ standalone projects and the ongoing home lab build.
 
 ## Standalone Projects
 
-Completed investigations and labs from academic and personal work.
-Each project is polished and documented as a professional case file.
-
-| # | Project | Status |
-|---|---|---|
-| 01 | OPNSense IDS/IPS Lab | 🔄 In Progress |
-| 02 | HTB CTF — Network Forensics | 🔄 In Progress |
-| 03 | DVWA — Command Injection | 🔄 In Progress |
-| 04 | Blind SQL Injection | 🔄 In Progress |
+| # | Project | Priority | Status |
+|---|---|---|---|
+| 01 | OPNSense IDS/IPS Lab | 🔴 High | 🔄 In Progress |
+| 02 | HTB CTF — Network Forensics | 🔴 High | ✅ Complete |
+| 03 | Wireshark HTTP/FTP Analysis | 🔴 High | ⏳ Pending |
+| 04 | Nmap Reconnaissance | 🔴 High | ⏳ Pending |
+| 05 | DVWA Command Injection | 🔴 High | ⏳ Pending |
+| 06 | SQL Injection & Blind SQL Injection | 🟡 Medium | ⏳ Pending |
+| 07 | Password Cracking — Hydra | 🟡 Medium | ⏳ Pending |
+| 08 | Cryptography — OpenSSL | 🟢 Low | ⏳ Pending |
 
 ---
 
@@ -57,6 +58,7 @@ Each project is polished and documented as a professional case file.
 - [ ] Simulate brute force login using Hydra
 - [ ] Capture failed login events
 - [ ] Build Splunk detection rule for brute force pattern
+- [ ] Use Hashcat to crack captured hashes
 - [ ] Analyze and document findings
 - [ ] Write Case File 2
 
@@ -94,6 +96,19 @@ Each project is polished and documented as a professional case file.
 
 ---
 
-## Notes
-*This roadmap is a living document — updated as the project
-evolves. Status is updated with every push.*
+## Tools & Technologies
+
+| Tool | Purpose | Phase |
+|---|---|---|
+| VMware | Lab virtualization | Phase 0 |
+| Kali Linux | Attacker machine | All phases |
+| OPNSense | Firewall & IDS/IPS | Phase 0 |
+| Wireshark | Network traffic capture | Phase 1, 3 |
+| Nmap | Reconnaissance scanning | Phase 1 |
+| Splunk | SIEM & log analysis | Phase 1, 2, 3 |
+| Hydra | Brute force attacks | Phase 2 |
+| Hashcat | Password cracking | Phase 2 |
+| Suricata | Intrusion detection | Phase 3 |
+| Python | Scripting & automation | Phase 4 |
+| Anthropic API | AI automation | Phase 4 |
+| GitHub Pages
