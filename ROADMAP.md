@@ -17,9 +17,9 @@ standalone projects and the ongoing home lab build.
 |---|---|---|---|
 | 01 | OPNSense IDS/IPS Lab | 🔴 High | 🔄 In Progress |
 | 02 | HTB CTF — Network Forensics | 🔴 High | ✅ Complete |
-| 03 | Wireshark HTTP/FTP Analysis | 🔴 High | ⏳ Pending |
+| 03 | DVWA — Command Injection & Database Enumeration | 🔴 High | ✅ Complete |
 | 04 | Nmap Reconnaissance | 🔴 High | ⏳ Pending |
-| 05 | DVWA Command Injection | 🔴 High | ⏳ Pending |
+| 05 | Wireshark HTTP/FTP Analysis | 🔴 High | ⏳ Pending |
 | 06 | SQL Injection & Blind SQL Injection | 🟡 Medium | ⏳ Pending |
 | 07 | Password Cracking — Hydra | 🟡 Medium | ⏳ Pending |
 | 08 | Cryptography — OpenSSL | 🟢 Low | ⏳ Pending |

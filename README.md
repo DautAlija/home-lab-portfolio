@@ -65,9 +65,9 @@ presented as a professional case file.
 |---|---|---|---|
 | 01 | [OPNSense IDS/IPS Lab](./standalone-projects/01-opnsense-ids-ips/) | Network security, Suricata, IDS/IPS | 🔄 In Progress |
 | 02 | [HTB CTF — Network Forensics](./standalone-projects/02-htb-ctf/) | Wireshark, PCAP analysis, credential discovery | ✅ Complete |
-| 03 | [Wireshark HTTP/FTP Analysis](./standalone-projects/03-wireshark-analysis/) | Protocol analysis, traffic inspection | ⏳ Pending |
+| 03 | [DVWA — Command Injection & Database Enumeration](./standalone-projects/03-dvwa-command-injection/) | Command injection, MySQL, directory traversal | ✅ Complete |
 | 04 | [Nmap Reconnaissance](./standalone-projects/04-nmap-recon/) | Network scanning, vulnerability detection | ⏳ Pending |
-| 05 | [DVWA Command Injection](./standalone-projects/05-dvwa-command-injection/) | Web app attacks, command injection, MySQL | ⏳ Pending |
+| 05 | [Wireshark HTTP/FTP Analysis](./standalone-projects/05-wireshark-analysis/) | Protocol analysis, traffic inspection | ⏳ Pending |
 | 06 | [SQL Injection & Blind SQL Injection](./standalone-projects/06-sql-injection/) | SQLMap, manual injection, database exploitation | ⏳ Pending |
 | 07 | [Password Cracking — Hydra](./standalone-projects/07-password-cracking/) | Brute force, dictionary attacks, Hydra | ⏳ Pending |
 | 08 | [Cryptography — OpenSSL](./standalone-projects/08-cryptography/) | Encryption, key pairs, hashing | ⏳ Pending |
