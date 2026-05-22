@@ -24,7 +24,7 @@ security automation.
 
 📍 Palm Harbor, Florida
 🔗 [LinkedIn](https://www.linkedin.com/in/daut-hadzijusufovic-195631233/)
-📧 daut@usf.edu
+📧 hdaut6@hotmail.com
 
 ---
 
