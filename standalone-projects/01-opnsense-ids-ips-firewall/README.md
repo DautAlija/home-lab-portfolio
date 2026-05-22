@@ -235,16 +235,272 @@ for web GUI access.
 
 ---
 
-## Web GUI Configuration
-*Coming soon — DHCP verification, firewall rules, and
-IDS/IPS configuration*
+---
+
+## Part 2 — Web GUI Configuration
+
+> **Quick Navigation**
+> - [Jump to Part 1 — Console Configuration](#part-1--vmware-network-configuration)
+> - [Jump to Part 3 — Firewall Rules](#part-3--firewall-rules) *(coming soon)*
+> - [Jump to Part 4 — IDS/IPS](#part-4--idsips-with-suricata) *(coming soon)*
 
 ---
 
-## Firewall Rules
+### Step 9 — Accessing The Web GUI
+
+With the firewall fully configured from the console I opened
+a browser on the host machine and navigated to:
+
+https://192.168.111.100
+
+After accepting the self-signed certificate warning I logged
+in with the default credentials:
+- **Username:** root
+- **Password:** opnsense
+
+The OPNSense dashboard loaded confirming web GUI access
+was working correctly.
+
+![OPNSense Web GUI Dashboard](./assets/09-webgui-dashboard.jpg)
+
+The dashboard confirmed:
+- **Hostname:** OPNsense.localdomain
+- **Version:** OPNSense 21.7.1-amd64
+- **WAN Gateway:** `192.168.149.2` — Online ✅
+- **LAN:** `192.168.111.100` — Up ✅
+- **CPU Usage:** 14%
+- **Memory:** 6% of 4GB used
+- All core services running
+
+---
+
+### Step 10 — WAN Interface Configuration
+
+I navigated to **Interfaces → WAN** and unchecked two
+settings that would otherwise block VMware NAT traffic
+from passing through the firewall:
+
+- ☐ **Block private networks** — unchecked
+- ☐ **Block bogon networks** — unchecked
+
+![WAN Interface Settings](./assets/10-wan-interface-settings.jpg)
+
+These settings exist to protect real-world firewalls from
+receiving traffic from private IP ranges on the WAN side.
+In a VMware lab environment the WAN uses a private NAT
+subnet so these must be disabled for traffic to flow
+correctly between the LAN and internet.
+
+---
+
+### Step 11 — Dashboard Widget Configuration
+
+I customized the dashboard to display security relevant
+information at a glance by adding the following widgets:
+
+- **Traffic Graph** — live bandwidth monitoring on WAN and LAN
+- **Firewall Log** — real time display of allowed and blocked connections
+- **Gateways** — WAN gateway status and latency
+- **Interfaces** — interface status and IP addresses
+- **System Log** — system events and configuration changes
+
+![Dashboard With Security Widgets](./assets/11-dashboard-widgets.jpg)
+
+The dashboard immediately surfaced useful information:
+- Live traffic graphs showing inbound and outbound bandwidth
+- Firewall log entries showing NTP traffic (port 123) being passed
+- Both WAN gateways showing **Online** status
+- LAN at `192.168.111.100` and WAN at `192.168.149.129` both up
+
+---
+
+### Step 12 — DHCP Server Verification & Configuration
+
+I navigated to **Services → DHCPv4 → LAN** to verify and
+correct the DHCP configuration. I identified that the DNS
+server and Gateway fields were empty and needed to be
+configured to point to the firewall LAN IP.
+
+![DHCP Server Configuration](./assets/13-dhcp-configured.jpg)
+
+Final verified configuration:
+
+| Setting | Value |
+|---|---|
+| Enable | ✅ Enabled |
+| Subnet | 192.168.111.0 |
+| Subnet Mask | 255.255.255.0 |
+| Range Start | 192.168.111.32 |
+| Range End | 192.168.111.64 |
+| DNS Server | 192.168.111.100 |
+| Gateway | 192.168.111.100 |
+
+Setting both the DNS server and Gateway to the firewall
+LAN IP `192.168.111.100` ensures any device connecting
+to the LAN uses OPNSense as both its DNS resolver and
+its default gateway for internet routing.
+
+---
+
+### Step 13 — General Settings & DNS Configuration
+
+I navigated to **System → Settings → General** to configure
+the firewall hostname, timezone, and upstream DNS server.
+
+![General Settings Configuration](./assets/14-general-settings.jpg)
+
+Settings configured:
+- **Hostname:** OPNsense
+- **Domain:** localdomain
+- **Timezone:** America/New_York
+- **DNS Server:** `8.8.8.8` (Google DNS) via WAN_DHCP gateway
+
+Adding Google DNS as the upstream resolver ensures OPNSense
+can forward DNS queries it cannot resolve locally out to
+the internet for resolution.
+
+**Note on DNS Service Selection:**
+During configuration I initially attempted to use Unbound DNS
+as the resolver. However Unbound failed to start consistently
+in this OPNSense 21.7.1 environment. After troubleshooting
+I identified the conflict and switched to Dnsmasq — a
+lightweight DNS forwarder that is more reliable in virtualized
+lab environments. Dnsmasq forwards DNS requests from LAN
+clients directly to the upstream Google DNS server at `8.8.8.8`
+rather than attempting full recursive resolution. This resolved
+the issue and DNS worked correctly for all subsequent tests.
+
+---
+
+### Step 14 — Enabling SSH
+
+I navigated to **System → Settings → Administration** and
+enabled SSH access to the firewall for remote management
+and future lab exercises.
+
+![SSH Enabled](./assets/15-ssh-enabled.jpg)
+
+Settings enabled:
+- ✅ Enable Secure Shell
+- ✅ Permit root user login
+- ✅ Permit password login
+
+**Note:** Enabling root remote access is not recommended
+in production environments. In this lab it is enabled for
+convenience and future exercises. In a real deployment
+certificate based authentication would replace password
+login as a security best practice.
+
+---
+
+### Step 15 — DNS Resolution Testing
+
+I navigated to **Interfaces → Diagnostics → DNS Lookup**
+and tested resolution of `www.google.com` to verify the
+upstream DNS configuration was working correctly from
+the firewall itself.
+
+![DNS Lookup Test](./assets/16-dns-lookup-test.jpg)
+
+The lookup returned multiple valid IP addresses for
+`www.google.com` confirming OPNSense can successfully
+forward DNS queries to `8.8.8.8` and return results
+to clients on the LAN.
+
+---
+
+### Step 16 — DSL VM Network Configuration
+
+Before booting the DSL VM I verified its VMware network
+adapter was set to **VMnet2** — the same Host-only network
+as the OPNSense LAN interface.
+
+![DSL VM Network Settings](./assets/17-dsl-vm-network-settings.jpg)
+
+This ensures the DSL VM connects to the OPNSense LAN
+and receives a DHCP address from the firewall rather
+than from any other DHCP service.
+
+---
+
+### Step 17 — DSL VM DHCP Verification
+
+After booting the DSL VM I opened a terminal and ran
+`ifconfig` to verify it received an IP address from
+the OPNSense DHCP server.
+
+![DSL VM IP Address](./assets/18-dsl-ip-address.jpg)
+
+The DSL VM was assigned:
+- **IP Address:** `192.168.111.33`
+- **Subnet Mask:** `255.255.255.0`
+- **Broadcast:** `192.168.111.255`
+
+`192.168.111.33` falls within the configured DHCP range
+of `.32` to `.64` confirming the OPNSense DHCP server
+is functioning correctly and issuing addresses to LAN
+clients as expected.
+
+---
+
+### Step 18 — End-to-End Connectivity Verification
+
+With the DSL VM connected I ran a series of tests to
+verify full end-to-end connectivity through the firewall.
+
+**Test 1 — Ping OPNSense LAN Interface:**
+
+![DSL Ping Firewall](./assets/19-dsl-ping-firewall.jpg)
+
+Successful ping to `192.168.111.100` confirms the DSL VM
+can reach the OPNSense firewall over the LAN.
+
+**Test 2 — Ping Internet:**
+
+![DSL Ping Internet](./assets/20-dsl-ping-internet.jpg)
+
+Successful ping to `8.8.8.8` confirms traffic is routing
+correctly through OPNSense from the LAN to the internet.
+
+**Test 3 — DNS Resolution:**
+
+![DSL nslookup Google](./assets/21-dsl-nslookup-google.jpg)
+
+Successful DNS resolution for both `8.8.8.8` and
+`www.google.com` using OPNSense as the DNS server at
+`192.168.111.100`. Multiple valid IP addresses returned
+for `www.google.com` confirming full DNS resolution
+is working end to end through the firewall.
+
+---
+
+## Part 2 — Summary
+
+| Task | Status |
+|---|---|
+| Web GUI Access | ✅ Complete |
+| WAN Interface Settings | ✅ Complete |
+| Dashboard Widgets | ✅ Complete |
+| DHCP Verification & Fix | ✅ Complete |
+| General Settings & DNS | ✅ Complete |
+| SSH Enabled | ✅ Complete |
+| DNS Resolution Test | ✅ Complete |
+| DSL VM Connected | ✅ Complete |
+| DHCP Verified on Client | ✅ Complete |
+| End-to-End Connectivity | ✅ Complete |
+
+The firewall is now fully configured and operational.
+The LAN network is protected, DHCP is serving clients
+correctly, DNS is resolving through OPNSense, and traffic
+is routing from the private LAN through the firewall to
+the internet.
+
+---
+
+## Part 3 — Firewall Rules & Traffic Control
 *Coming soon*
 
 ---
 
-## IDS/IPS Configuration
+## Part 4 — IDS/IPS with Suricata
 *Coming soon*
