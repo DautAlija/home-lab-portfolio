@@ -15,7 +15,11 @@ standalone projects and the ongoing home lab build.
 
 | # | Project | Priority | Status |
 |---|---|---|---|
-| 01 | OPNSense IDS/IPS Lab | 🔴 High | 🔄 In Progress |
+| 01 | OPNSense Firewall & IDS/IPS Lab | 🔴 High | 🔄 In Progress |
+| | Part 1 — Console Configuration & Network Setup | | ✅ Complete |
+| | Part 2 — Web GUI & DHCP Verification | | ⏳ Pending |
+| | Part 3 — Firewall Rules & Traffic Control | | ⏳ Pending |
+| | Part 4 — IDS/IPS with Suricata | | ⏳ Pending |
 | 02 | HTB CTF — Network Forensics | 🔴 High | ✅ Complete |
 | 03 | DVWA — Command Injection & Database Enumeration | 🔴 High | ✅ Complete |
 | 04 | Nmap Reconnaissance | 🔴 High | ⏳ Pending |

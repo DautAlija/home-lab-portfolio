@@ -63,7 +63,7 @@ presented as a professional case file.
 
 | # | Project | Skills Demonstrated | Status |
 |---|---|---|---|
-| 01 | [OPNSense IDS/IPS Lab](./standalone-projects/01-opnsense-ids-ips/) | Network security, Suricata, IDS/IPS | 🔄 In Progress |
+| 01 | [OPNSense Firewall & IDS/IPS Lab](./standalone-projects/01-opnsense-ids-ips-firewall/) | Network security, firewall config, Suricata, IDS/IPS | 🔄 In Progress — Part 1 Complete |
 | 02 | [HTB CTF — Network Forensics](./standalone-projects/02-htb-ctf/) | Wireshark, PCAP analysis, credential discovery | ✅ Complete |
 | 03 | [DVWA — Command Injection & Database Enumeration](./standalone-projects/03-dvwa-command-injection/) | Command injection, MySQL, directory traversal | ✅ Complete |
 | 04 | [Nmap Reconnaissance](./standalone-projects/04-nmap-recon/) | Network scanning, vulnerability detection | ⏳ Pending |
