@@ -17,14 +17,7 @@ standalone projects and the ongoing home lab build.
 |---|---|---|---|
 | 01 | OPNSense Firewall & IDS/IPS Lab | 🔴 High | 🔄 In Progress |
 | | ↳ Part 1 — Console Configuration & Network Setup | | ✅ Complete |
-| | ↳ Part 2 — Web GUI Configuration | | 🔄 In Progress |
-| | &nbsp;&nbsp;&nbsp;• Web GUI access & setup wizard | | 🔄 Active |
-| | &nbsp;&nbsp;&nbsp;• WAN interface settings | | ⏳ Pending |
-| | &nbsp;&nbsp;&nbsp;• Dashboard configuration | | ⏳ Pending |
-| | &nbsp;&nbsp;&nbsp;• DHCP verification & fix | | ⏳ Pending |
-| | &nbsp;&nbsp;&nbsp;• DNS configuration | | ⏳ Pending |
-| | &nbsp;&nbsp;&nbsp;• SSH setup | | ⏳ Pending |
-| | &nbsp;&nbsp;&nbsp;• DSL VM connectivity test | | ⏳ Pending |
+| | ↳ Part 2 — Web GUI Configuration | | ✅ Complete |
 | | ↳ Part 3 — Firewall Rules & Traffic Control | | ⏳ Pending |
 | | ↳ Part 4 — IDS/IPS with Suricata | | ⏳ Pending |
 | 02 | HTB CTF — Network Forensics | 🔴 High | ✅ Complete |
