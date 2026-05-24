@@ -19,9 +19,11 @@ standalone projects and the ongoing home lab build.
 | | ↳ Part 1 — Console Configuration & Network Setup | | ✅ Complete |
 | | ↳ Part 2 — Web GUI Configuration | | ✅ Complete |
 | | ↳ Part 3 — Firewall Rules & Traffic Control | | 🔄 In Progress |
-| | &nbsp;&nbsp;&nbsp;• Default rules review | | ⏳ Pending |
-| | &nbsp;&nbsp;&nbsp;• Aliases | | ⏳ Pending |
-| | &nbsp;&nbsp;&nbsp;• Allow/Block HTTP rules | | ⏳ Pending |
+| | &nbsp;&nbsp;&nbsp;• Default rules review | | ✅ Complete |
+| | &nbsp;&nbsp;&nbsp;• Aliases | | ✅ Complete |
+| | &nbsp;&nbsp;&nbsp;• Allow/Block HTTP rules | | ✅ Complete |
+| | &nbsp;&nbsp;&nbsp;• Firewall log analysis | | ✅ Complete |
+| | &nbsp;&nbsp;&nbsp;• Block vs Reject demonstration | | ⏳ Pending |
 | | &nbsp;&nbsp;&nbsp;• FTP rule | | ⏳ Pending |
 | | &nbsp;&nbsp;&nbsp;• Telnet rule | | ⏳ Pending |
 | | &nbsp;&nbsp;&nbsp;• NAT port forwarding | | ⏳ Pending |
