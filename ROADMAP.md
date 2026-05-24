@@ -18,7 +18,14 @@ standalone projects and the ongoing home lab build.
 | 01 | OPNSense Firewall & IDS/IPS Lab | 🔴 High | 🔄 In Progress |
 | | ↳ Part 1 — Console Configuration & Network Setup | | ✅ Complete |
 | | ↳ Part 2 — Web GUI Configuration | | ✅ Complete |
-| | ↳ Part 3 — Firewall Rules & Traffic Control | | ⏳ Pending |
+| | ↳ Part 3 — Firewall Rules & Traffic Control | | 🔄 In Progress |
+| | &nbsp;&nbsp;&nbsp;• Default rules review | | ⏳ Pending |
+| | &nbsp;&nbsp;&nbsp;• Aliases | | ⏳ Pending |
+| | &nbsp;&nbsp;&nbsp;• Allow/Block HTTP rules | | ⏳ Pending |
+| | &nbsp;&nbsp;&nbsp;• FTP rule | | ⏳ Pending |
+| | &nbsp;&nbsp;&nbsp;• Telnet rule | | ⏳ Pending |
+| | &nbsp;&nbsp;&nbsp;• NAT port forwarding | | ⏳ Pending |
+| | &nbsp;&nbsp;&nbsp;• Traffic shaping | | ⏳ Pending |
 | | ↳ Part 4 — IDS/IPS with Suricata | | ⏳ Pending |
 | 02 | HTB CTF — Network Forensics | 🔴 High | ✅ Complete |
 | 03 | DVWA — Command Injection & Database Enumeration | 🔴 High | ✅ Complete |
