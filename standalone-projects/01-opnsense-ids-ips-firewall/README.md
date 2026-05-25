@@ -497,8 +497,179 @@ the internet.
 
 ---
 
+---
+
 ## Part 3 — Firewall Rules & Traffic Control
-*Coming soon*
+
+> **Quick Navigation**
+> - [Jump to Part 1 — Console Configuration](#part-1--vmware-network-configuration)
+> - [Jump to Part 2 — Web GUI Configuration](#part-2--web-gui-configuration)
+> - [Jump to Part 4 — IDS/IPS](#part-4--idsips-with-suricata) *(coming soon)*
+
+---
+
+### Understanding Default Firewall Rules
+
+Before creating any custom rules I reviewed the default rule
+configuration that OPNSense ships with out of the box.
+
+**LAN Rules — Default State:**
+
+![LAN Default Rules](./assets/22-firewall-rules-lan-default.jpg)
+
+Two default rules exist on the LAN interface:
+- **Default allow LAN to any rule (IPv4)** — allows any LAN
+device to reach anywhere on the internet over any protocol
+- **Default allow LAN IPv6 to any rule** — same for IPv6 traffic
+
+**WAN Rules — Default State:**
+
+![WAN Default Rules](./assets/23-firewall-rules-wan-default.jpg)
+
+No rules exist on the WAN interface by default. OPNSense
+displays a clear message: "All incoming connections on this
+interface will be blocked until you add a pass rule." This is
+the correct and secure default posture — nothing from the
+internet can reach inside the network unless explicitly allowed.
+
+**Critical Concept — Rule Order:**
+OPNSense evaluates rules top to bottom on a first-match basis.
+The first rule that matches a packet stops evaluation. This
+means block rules must be placed **above** allow rules or they
+will never trigger — the allow rule will match first and permit
+the traffic regardless of any block rules below it.
+
+---
+
+### Step 19 — Creating Aliases
+
+Before writing firewall rules I created aliases — named groups
+of IPs or ports that make rules readable, maintainable, and
+easy to update. Instead of hardcoding IP addresses into rules,
+aliases allow a single update to automatically apply across
+all rules that reference them.
+
+![Aliases Configured](./assets/24-aliases-configured.jpg)
+
+Three aliases were created:
+
+| Alias | Type | Value | Purpose |
+|---|---|---|---|
+| DSL_VM | Host(s) | 192.168.111.33 | DSL Linux VM on LAN |
+| Web_Ports | Port(s) | 80, 443 | HTTP and HTTPS ports |
+| Reddit | Host(s) | www.reddit.com | Test site for block rule |
+
+Using aliases rather than raw IP addresses is considered best
+practice in enterprise environments. When a server changes IP
+addresses, updating the alias automatically updates every rule
+that references it — no need to hunt through individual rules.
+
+---
+
+### Step 20 — Creating A Block Rule
+
+To demonstrate firewall rule creation and traffic control I
+created a rule to block HTTP access to Reddit from all LAN
+clients. This simulates a real-world content filtering scenario
+common in enterprise and legal environments.
+
+**Rule Configuration:**
+
+| Field | Value |
+|---|---|
+| Action | Block |
+| Interface | LAN |
+| Direction | In |
+| TCP/IP Version | IPv4 |
+| Protocol | TCP |
+| Source | LAN net |
+| Destination | Reddit (alias) |
+| Destination Port | 80 (HTTP) |
+| Log | ✅ Enabled |
+| Description | Block HTTP access to Reddit |
+
+After saving the rule I verified it was positioned **above** the
+default allow rule — a critical step. If the block rule is below
+the allow rule it will never trigger because the allow rule
+matches first.
+
+![Block Reddit Rule — Correct Order](./assets/25-block-reddit-rule.jpg)
+
+Rule order after configuration:
+
+1.Block HTTP access to Reddit  ← evaluated first
+2.Default allow LAN to any rule
+3.Default allow LAN IPv6 to any rule
+
+---
+
+### Step 21 — Testing The Block Rule
+
+With the rule in place I opened Firefox on the DSL VM and
+attempted to navigate to `http://www.reddit.com`.
+
+![Reddit Blocked — DSL Browser](./assets/26-reddit-blocked-test.jpg)
+
+The page failed to load — the DSL browser showed its default
+cached homepage instead of Reddit, confirming the firewall
+was dropping the connection. This behavior is characteristic
+of a **Block** action — the firewall silently drops packets
+with no response sent back to the client. The browser
+connection simply hangs and eventually times out.
+
+This is distinct from a **Reject** action which actively sends
+a connection refused message back to the client, causing the
+browser to display an error immediately rather than hanging.
+
+---
+
+### Step 22 — Firewall Log Analysis
+
+To verify the rule was firing correctly I navigated to
+**Firewall → Log Files → Live View** and filtered by
+destination port 80.
+
+![Firewall Log — Reddit Blocked](./assets/27-firewall-log-reddit-blocked.jpg)
+
+The logs confirmed the block rule was working exactly as
+intended. Every entry showed:
+
+| Field | Value | Meaning |
+|---|---|---|
+| Interface | lan | Traffic from LAN interface |
+| Source | 192.168.111.33 | DSL VM attempting connection |
+| Destination | 146.75.125.140:80 | Reddit's IP on HTTP port |
+| Protocol | tcp | TCP connection attempt |
+| Label | Block HTTP access to Reddit | Our rule firing |
+| Color | Red | Blocked traffic |
+
+Multiple timestamps showed the DSL browser repeatedly
+retrying the connection — each attempt blocked by the
+firewall rule. This is exactly the kind of log analysis a SOC
+analyst performs to verify security controls are functioning
+and to investigate suspicious traffic patterns.
+
+Reading firewall logs is a fundamental SOC skill. The ability
+to correlate log entries with specific rules, identify source
+and destination hosts, and confirm whether traffic was
+permitted or denied forms the basis of network security
+monitoring.
+
+---
+
+## Part 3 — In Progress
+
+| Task | Status |
+|---|---|
+| Default rules review | ✅ Complete |
+| Aliases configuration | ✅ Complete |
+| Block rule creation & testing | ✅ Complete |
+| Firewall log analysis | ✅ Complete |
+| Block vs Reject demonstration | ⏳ Next session |
+| FTP rule | ⏳ Pending |
+| Telnet rule | ⏳ Pending |
+| NAT port forwarding | ⏳ Pending |
+| Traffic shaping | ⏳ Pending |
 
 ---
 
