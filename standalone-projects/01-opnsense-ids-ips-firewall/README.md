@@ -858,6 +858,102 @@ interest without changing the overall traffic policy.
 
 ---
 
+### Step 26 — NAT Port Forwarding
+
+NAT (Network Address Translation) Port Forwarding allows
+external clients to access internal services through the
+firewall. In this configuration I exposed the DSL VM's
+Monkey Web server to the WAN interface — simulating a
+real enterprise scenario where an internal web server is
+made accessible from outside the network.
+
+**How NAT Port Forwarding Works:**
+
+External client → OPNSense WAN IP:8080
+↓
+OPNSense NAT rule
+↓
+DSL VM (192.168.111.33):80
+
+Any connection arriving at the firewall WAN on port 8080
+gets forwarded internally to the DSL VM on port 80.
+
+**Step 1 — Enable Monkey Web Server on DSL VM**
+
+The DSL VM runs a lightweight web server called Monkey Web.
+It is not enabled by default and must be started manually
+through the DSL Control Panel.
+
+![Monkey Web Local Test](./assets/36-monkey-web-local-test.jpg)
+
+After starting Monkey Web I verified it was serving content
+by navigating to `http://127.0.0.1` on the DSL VM — the
+Florida Center for Cybersecurity page loaded confirming the
+web server was running correctly on port 80.
+
+**Step 2 — Configure NAT Port Forward Rule**
+
+I navigated to **Firewall → NAT → Port Forward** and
+created a new forwarding rule:
+
+| Field | Value |
+|---|---|
+| Interface | WAN |
+| Protocol | TCP |
+| Destination | WAN address |
+| Destination Port | 8080 |
+| Redirect Target IP | DSL_VM (alias) |
+| Redirect Target Port | 80 (HTTP) |
+| Description | Forward WAN 8080 to DSL Web Server |
+
+![NAT Port Forward Rule](./assets/37-nat-port-forward-rule.jpg)
+
+OPNSense automatically generated an associated WAN firewall
+rule to allow inbound traffic on port 8080 when the NAT
+rule was created.
+
+**Step 3 — Route Configuration**
+
+Testing revealed a common VMware NAT environment issue —
+the Windows host was attempting to connect directly to the
+DSL VM bypassing the firewall entirely. This occurs because
+the VMnet8 interface on the host has no gateway configured
+and is set to "On-Link" causing traffic to circumvent
+OPNSense.
+
+The textbook documents this as a known VMware virtualization
+limitation. When the host VMnet8 adapter has no gateway
+the browser connects directly from the VMnet8 interface
+to the DSL server on VMnet2 — a Host-Only network that
+cannot be traversed directly from VMnet8.
+
+The solution requires adding a Windows route to force
+traffic through the OPNSense firewall as the gateway:
+
+```bash
+# Check current WAN subnet route
+route print 192.168.149.0
+
+# Delete the On-Link route
+route delete 192.168.149.0
+
+# Add new route with OPNSense as gateway
+route add 192.168.149.0 mask 255.255.255.0 192.168.149.129 metric 1 if <interface-ID>
+```
+
+**Note:** Modifying Windows routes in a VMware environment
+requires care — removing routes can temporarily disconnect
+access to the OPNSense web GUI until routes are restored.
+Routes can be reset using `route -f` followed by
+`ipconfig /release` and `ipconfig /renew` to restore
+VMware's default adapter routes.
+
+This NAT port forwarding configuration will be fully tested
+and verified in the next session after resolving the route
+configuration in the VMware environment.
+
+---
+
 ## Part 3 — In Progress
 
 | Task | Status |
@@ -869,7 +965,7 @@ interest without changing the overall traffic policy.
 | Block vs Reject investigation | ✅ Complete |
 | FTP rule | ✅ Complete |
 | Telnet rule | ✅ Complete |
-| NAT port forwarding | ⏳ Next session |
+| NAT port forwarding | 🔄 In Progress |
 | Traffic shaping | ⏳ Pending |
 
 ---
