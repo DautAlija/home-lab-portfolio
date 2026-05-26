@@ -657,6 +657,85 @@ monitoring.
 
 ---
 
+### Step 23 — Block vs Reject Investigation
+
+After confirming the block rule was working I modified the action
+from **Block** to **Reject** to demonstrate the behavioral
+difference between the two actions.
+
+**Block vs Reject — Key Difference:**
+- **Block** — firewall silently drops packets. The connection
+hangs indefinitely with no response sent back to the client.
+- **Reject** — firewall actively sends a "Connection Refused"
+message back to the client. The connection fails immediately.
+
+**Testing revealed three important firewall concepts:**
+
+**Finding 1 — Port 80 alone is insufficient to block modern sites**
+
+
+Running `wget -T 5 http://www.reddit.com` showed the connection
+still reaching Reddit's server:
+
+Connecting to www.reddit.com[146.75.125.140]:80... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://www.reddit.com/ [following]
+
+Reddit accepted the port 80 connection just long enough to
+send a 301 redirect to HTTPS. Our rule only covered port 80
+so the initial connection succeeded before the redirect. This
+demonstrated that blocking only HTTP is insufficient for modern
+websites that redirect to HTTPS.
+
+**Fix:** Updated the rule to use the `Web_Ports` alias covering
+both port 80 (HTTP) and port 443 (HTTPS).
+
+![wget Port 80 Bypass](./assets/28-wget-port80-bypass.jpg)
+
+**Finding 2 — TCP rules don't block ICMP**
+
+Running `ping -c 4 146.75.125.140` showed successful ping
+responses despite the block rule being active. This is because
+our rule specifies `Protocol: TCP` — ping uses ICMP which is
+a completely different protocol and bypasses TCP-specific rules.
+
+This demonstrates the importance of protocol specificity when
+writing firewall rules. A rule targeting TCP traffic has no
+effect on ICMP, UDP, or other protocols.
+
+![Ping ICMP Bypass](./assets/29-ping-icmp-bypass.jpg)
+
+**Finding 3 — Reject confirmed working on port 443**
+
+Running `telnet 146.75.125.140 443` with the rule set to
+Reject produced:
+
+Trying 146.75.125.140...
+telnet: Unable to connect to remote host: Connection refused
+
+The immediate "Connection refused" response confirmed the
+Reject action was working correctly on port 443. This is the
+definitive proof of the Reject behavior — the firewall actively
+refused the connection rather than silently dropping it.
+
+![Telnet Port 443 Rejected](./assets/30-telnet-443-rejected.jpg)
+
+**Final Rule Configuration:**
+
+After completing the investigation the rule was updated and
+set back to Block — the preferred action in production
+environments since it reveals less information to potential
+attackers about the firewall's rule set.
+
+| Field | Value |
+|---|---|
+| Action | Block |
+| Destination | Reddit (alias) |
+| Destination Port | Web_Ports (80 & 443) |
+| Description | Block HTTP and HTTPS access to Reddit |
+
+---
+
 ## Part 3 — In Progress
 
 | Task | Status |
@@ -665,8 +744,8 @@ monitoring.
 | Aliases configuration | ✅ Complete |
 | Block rule creation & testing | ✅ Complete |
 | Firewall log analysis | ✅ Complete |
-| Block vs Reject demonstration | ⏳ Next session |
-| FTP rule | ⏳ Pending |
+| Block vs Reject investigation | ✅ Complete |
+| FTP rule | ⏳ Next session |
 | Telnet rule | ⏳ Pending |
 | NAT port forwarding | ⏳ Pending |
 | Traffic shaping | ⏳ Pending |
