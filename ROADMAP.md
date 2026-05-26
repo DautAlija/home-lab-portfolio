@@ -24,8 +24,8 @@ standalone projects and the ongoing home lab build.
 | | &nbsp;&nbsp;&nbsp;• Allow/Block HTTP rules | | ✅ Complete |
 | | &nbsp;&nbsp;&nbsp;• Firewall log analysis | | ✅ Complete |
 | | &nbsp;&nbsp;&nbsp;• Block vs Reject demonstration | | ✅ Complete |
-| | &nbsp;&nbsp;&nbsp;• FTP rule | | ⏳ Pending |
-| | &nbsp;&nbsp;&nbsp;• Telnet rule | | ⏳ Pending |
+| | &nbsp;&nbsp;&nbsp;• FTP rule | | ✅ Complete |
+| | &nbsp;&nbsp;&nbsp;• Telnet rule | | ✅ Complete |
 | | &nbsp;&nbsp;&nbsp;• NAT port forwarding | | ⏳ Pending |
 | | &nbsp;&nbsp;&nbsp;• Traffic shaping | | ⏳ Pending |
 | | ↳ Part 4 — IDS/IPS with Suricata | | ⏳ Pending |

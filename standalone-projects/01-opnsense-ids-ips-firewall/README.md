@@ -736,6 +736,128 @@ attackers about the firewall's rule set.
 
 ---
 
+### Step 24 — FTP Rule
+
+I created a firewall rule to explicitly allow FTP traffic from
+the LAN to the WAN.
+
+**Rule Configuration:**
+
+| Field | Value |
+|---|---|
+| Action | Pass |
+| Interface | LAN |
+| Direction | In |
+| TCP/IP Version | IPv4 |
+| Protocol | TCP |
+| Source | LAN net |
+| Destination | Any |
+| Destination Port | FTP (21) |
+| Log | ✅ Enabled |
+| Description | Allow FTP from LAN to WAN |
+
+![FTP Rule Created](./assets/31-ftp-rule.jpg)
+
+**Testing FTP Connectivity:**
+
+I connected to the Southwest Florida Water Management District
+public FTP server to verify FTP traffic was passing through
+the firewall correctly.
+
+```bash
+ftp ftp.swfwmd.state.fl.us
+```
+
+After authenticating with anonymous credentials I switched to
+passive mode and retrieved a directory listing confirming a
+successful FTP session through the firewall.
+
+![FTP Session Success](./assets/32-ftp-test-success.jpg)
+
+The session confirmed:
+- Connection established to external FTP server ✅
+- Anonymous authentication successful ✅
+- Passive mode working correctly ✅
+- Directory listing received ✅
+
+---
+
+### Step 25 — Telnet Rule
+
+I created a firewall rule to allow Telnet traffic from the
+LAN to the WAN. Following the textbook convention this rule
+was named "Game of Chess" referencing the FreeChess.org
+test server used to verify connectivity.
+
+**Rule Configuration:**
+
+| Field | Value |
+|---|---|
+| Action | Pass |
+| Interface | LAN |
+| Direction | In |
+| TCP/IP Version | IPv4 |
+| Protocol | TCP |
+| Source | LAN net |
+| Destination | Any |
+| Destination Port | 23 (Telnet) |
+| Log | ✅ Enabled |
+| Description | Game of Chess |
+
+![Telnet Rule Created](./assets/33-telnet-rule.jpg)
+
+**Testing Telnet Connectivity:**
+
+I connected to the Free Internet Chess Server at
+`54.39.129.129` to verify Telnet traffic was passing through
+the firewall correctly.
+
+```bash
+telnet 54.39.129.129
+```
+
+![Telnet Session Success](./assets/34-telnet-test-success.jpg)
+
+The FreeChess.org ASCII banner loaded successfully confirming
+Telnet traffic on port 23 is routing through OPNSense correctly.
+
+---
+
+### Understanding Rule Purpose — Default Allow vs Default Deny
+
+An important observation from this lab — the FTP and Telnet
+rules were created as part of a structured learning exercise
+to demonstrate explicit rule creation and protocol-specific
+traffic control.
+
+In this lab environment the default LAN rule "Default allow
+LAN to any rule" permits all outbound traffic from the LAN
+to the internet. This means FTP and Telnet traffic would pass
+through the firewall even without these specific rules.
+
+However in a **production environment** running a proper
+**default-deny security posture** these explicit rules become
+essential. A default-deny configuration works as follows:
+
+1.Delete the "Default allow LAN to any rule"
+2.Block all outbound traffic by default
+3.Create explicit allow rules only for approved protocols
+4.Log everything for monitoring and auditing
+
+This is how real enterprise firewalls are configured — block
+everything, allow only what is explicitly needed, and log all
+traffic for security monitoring. The FTP and Telnet rules
+created in this lab demonstrate exactly the kind of explicit
+protocol-specific rules that would be required in a
+default-deny environment.
+
+Additionally creating protocol-specific rules with logging
+enabled — even when a default allow rule exists — allows
+security teams to monitor and audit specific protocols of
+interest without changing the overall traffic policy.
+
+---
+
 ## Part 3 — In Progress
 
 | Task | Status |
@@ -745,9 +867,9 @@ attackers about the firewall's rule set.
 | Block rule creation & testing | ✅ Complete |
 | Firewall log analysis | ✅ Complete |
 | Block vs Reject investigation | ✅ Complete |
-| FTP rule | ⏳ Next session |
-| Telnet rule | ⏳ Pending |
-| NAT port forwarding | ⏳ Pending |
+| FTP rule | ✅ Complete |
+| Telnet rule | ✅ Complete |
+| NAT port forwarding | ⏳ Next session |
 | Traffic shaping | ⏳ Pending |
 
 ---
