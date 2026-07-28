@@ -6,9 +6,16 @@ an on-prem home lab, and a cloud security lab. Built to develop
 hands-on skills in network security, threat detection, incident
 response, cloud identity, and security automation.
 
-This roadmap tracks all active and completed work across
-standalone projects, the on-prem home lab, the cloud security
-lab, and ongoing certifications/challenges.
+---
+
+## Certifications & Challenges
+
+| Item | Status |
+|---|---|
+| Timus SASE Certified Specialist | ✅ Complete |
+| Cribl Certified User (CC User) | ✅ Complete |
+| TryHackMe Rooms | ⏳ Planned |
+| BTLO Investigations | ⏳ Planned |
 
 ---
 
@@ -105,11 +112,11 @@ lab, and ongoing certifications/challenges.
 ## Cloud Security Lab
 
 ### Phase 1 — M365 Dev Tenant & Entra ID Setup
-> Status: ⏳ Not Started
+> Status: 🔄 In Progress
 
-- [ ] Take Cribl University training and earn Cribl certification
+- [x] Complete Cribl University training and earn CC User certification
 - [ ] Set up free Microsoft 365 Developer sandbox tenant
-- [ ] Populate tenant with 10-20 dummy users/groups
+- [ ] Populate tenant with 10-20 dummy users and groups
 - [ ] Configure Conditional Access policies (geo-block, MFA)
 - [ ] Document tenant setup and policy configuration
 
@@ -121,7 +128,7 @@ lab, and ongoing certifications/challenges.
 - [ ] Register app in Entra ID for API access
 - [ ] Configure Cribl.Cloud source to ingest Entra ID audit/sign-in logs
 - [ ] Build Cribl pipeline — mask PII, drop noisy events
-- [ ] Route clean telemetry to a destination (Elastic/Grafana)
+- [ ] Route clean telemetry to destination
 - [ ] Document data flow and pipeline configuration
 
 ---
@@ -129,44 +136,10 @@ lab, and ongoing certifications/challenges.
 ### Phase 3 — SOC Simulation & Dashboard
 > Status: ⏳ Not Started
 
-- [ ] Trigger Conditional Access violation (VPN, simulated foreign login)
+- [ ] Trigger Conditional Access violation via VPN
 - [ ] Verify event captured and processed through Cribl pipeline
 - [ ] Build SOC dashboard from clean telemetry
-- [ ] Write up findings as a case file
-
----
-
-## Certs & Challenges
-
-| Item | Status |
-|---|---|
-| Timus SASE Certified Specialist | ✅ Complete |
-| Cribl Certification | ⏳ Planned (before Cloud Security Lab Phase 2) |
-| TryHackMe Rooms | ⏳ Ongoing — alongside other projects |
-| BTLO Investigations | ⏳ Ongoing — alongside other projects |
-
----
-
-## Tools & Technologies
-
-| Tool | Purpose | Area |
-|---|---|---|
-| VMware | Lab virtualization | Home Lab |
-| Kali Linux | Attacker machine | Home Lab |
-| OPNSense | Firewall & IDS/IPS | Home Lab |
-| Wireshark | Network traffic capture | Home Lab |
-| Nmap | Reconnaissance scanning | Home Lab |
-| Splunk | SIEM & log analysis | Home Lab |
-| Hydra | Brute force attacks | Home Lab |
-| Hashcat | Password cracking | Home Lab |
-| Suricata | Intrusion detection | Home Lab |
-| Python | Scripting & automation | Home Lab |
-| Anthropic API | AI automation | Home Lab |
-| GitHub Pages | Portfolio website | Home Lab |
-| Microsoft Entra ID | Cloud identity & access | Cloud Security Lab |
-| Microsoft Graph API | Identity log/data access | Cloud Security Lab |
-| Cribl.Cloud | Log pipeline & transformation | Cloud Security Lab |
-| M365 Developer Tenant | Sandbox environment | Cloud Security Lab |
+- [ ] Write up findings as a professional case file
 
 ---
 
