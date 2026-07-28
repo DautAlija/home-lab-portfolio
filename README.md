@@ -21,6 +21,7 @@ investigations, an on-prem home lab, and a cloud security pipeline.
 | Timus SASE Certified Specialist | Timus Networks | ✅ Complete |
 | Cribl Certified User (CC User) | Cribl | ✅ Complete |
 
+→ [View Certificates](./certs-and-challenges/)
 ---
 
 ## Standalone Projects
