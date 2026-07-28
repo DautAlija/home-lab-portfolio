@@ -2,15 +2,20 @@
 
 ## Completed Certifications
 
+### Cribl Certified User (CC User)
+- **Issuer:** Cribl
+- **Issued:** July 16, 2026
+- **Credential ID:** 188987486
+- **Valid Until:** July 16, 2029
+
+![Cribl CC User Certificate](./cribl-cc-user-cert.png)
+
+---
+
 ### Timus SASE Certified Specialist
 - **Issuer:** Timus Networks
 - **Issued:** 2026
-- 📄 [View Certificate](./timus-sase-cert.pdf)
-
-### Cribl Certified User (CC User)
-- **Issuer:** Cribl
-- **Issued:** July 2026
-- 📄 [View Certificate](./cribl-cc-user-cert.pdf)
+- 📄 Certificate coming soon
 
 ---
 
