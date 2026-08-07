@@ -1,13 +1,21 @@
 # Home Lab Portfolio — Project Roadmap
 
 ## Overview
-A personal cybersecurity home lab simulating real-world attack
-scenarios and analyst workflows. Built to develop hands-on skills
-in network security, threat detection, incident response, and
-security automation.
+A personal cybersecurity portfolio spanning standalone projects,
+an on-prem home lab, and a cloud security lab. Built to develop
+hands-on skills in network security, threat detection, incident
+response, cloud identity, and security automation.
 
-This roadmap tracks all active and completed work across both
-standalone projects and the ongoing home lab build.
+---
+
+## Certifications & Challenges
+
+| Item | Status |
+|---|---|
+| Timus SASE Certified Specialist | ✅ Complete |
+| Cribl Certified User (CC User) | ✅ Complete |
+| TryHackMe Rooms | ⏳ Planned |
+| BTLO Investigations | ⏳ Planned |
 
 ---
 
@@ -18,16 +26,7 @@ standalone projects and the ongoing home lab build.
 | 01 | OPNSense Firewall & IDS/IPS Lab | 🔴 High | 🔄 In Progress |
 | | ↳ Part 1 — Console Configuration & Network Setup | | ✅ Complete |
 | | ↳ Part 2 — Web GUI Configuration | | ✅ Complete |
-| | ↳ Part 3 — Firewall Rules & Traffic Control | | 🔄 In Progress |
-| | &nbsp;&nbsp;&nbsp;• Default rules review | | ✅ Complete |
-| | &nbsp;&nbsp;&nbsp;• Aliases | | ✅ Complete |
-| | &nbsp;&nbsp;&nbsp;• Allow/Block HTTP rules | | ✅ Complete |
-| | &nbsp;&nbsp;&nbsp;• Firewall log analysis | | ✅ Complete |
-| | &nbsp;&nbsp;&nbsp;• Block vs Reject demonstration | | ✅ Complete |
-| | &nbsp;&nbsp;&nbsp;• FTP rule | | ✅ Complete |
-| | &nbsp;&nbsp;&nbsp;• Telnet rule | | ✅ Complete |
-| | &nbsp;&nbsp;&nbsp;• NAT port forwarding | | ⏳ Pending |
-| | &nbsp;&nbsp;&nbsp;• Traffic shaping | | ⏳ Pending |
+| | ↳ Part 3 — Firewall Rules & Traffic Control | | 🔄 In Progress — NAT & traffic shaping remaining |
 | | ↳ Part 4 — IDS/IPS with Suricata | | ⏳ Pending |
 | 02 | HTB CTF — Network Forensics | 🔴 High | ✅ Complete |
 | 03 | DVWA — Command Injection & Database Enumeration | 🔴 High | ✅ Complete |
@@ -36,10 +35,11 @@ standalone projects and the ongoing home lab build.
 | 06 | SQL Injection & Blind SQL Injection | 🟡 Medium | ⏳ Pending |
 | 07 | Password Cracking — Hydra | 🟡 Medium | ⏳ Pending |
 | 08 | Cryptography — OpenSSL | 🟢 Low | ⏳ Pending |
+| 09 | Active Directory Lab — PowerView, Kerberos, Delegation | 🟢 Low | ⏳ Future |
 
 ---
 
-## Home Lab
+## Home Lab (On-Prem)
 
 ### Phase 0 — Environment Setup
 > Status: 🔄 In Progress
@@ -109,19 +109,40 @@ standalone projects and the ongoing home lab build.
 
 ---
 
-## Tools & Technologies
+## Cloud Security Lab
 
-| Tool | Purpose | Phase |
-|---|---|---|
-| VMware | Lab virtualization | Phase 0 |
-| Kali Linux | Attacker machine | All phases |
-| OPNSense | Firewall & IDS/IPS | Phase 0 |
-| Wireshark | Network traffic capture | Phase 1, 3 |
-| Nmap | Reconnaissance scanning | Phase 1 |
-| Splunk | SIEM & log analysis | Phase 1, 2, 3 |
-| Hydra | Brute force attacks | Phase 2 |
-| Hashcat | Password cracking | Phase 2 |
-| Suricata | Intrusion detection | Phase 3 |
-| Python | Scripting & automation | Phase 4 |
-| Anthropic API | AI automation | Phase 4 |
-| GitHub Pages
+### Phase 1 — M365 Dev Tenant & Entra ID Setup
+> Status: 🔄 In Progress
+
+- [x] Complete Cribl University training and earn CC User certification
+- [ ] Set up free Microsoft 365 Developer sandbox tenant
+- [ ] Populate tenant with 10-20 dummy users and groups
+- [ ] Configure Conditional Access policies (geo-block, MFA)
+- [ ] Document tenant setup and policy configuration
+
+---
+
+### Phase 2 — Cribl.Cloud Pipeline Configuration
+> Status: ⏳ Not Started
+
+- [ ] Register app in Entra ID for API access
+- [ ] Configure Cribl.Cloud source to ingest Entra ID audit/sign-in logs
+- [ ] Build Cribl pipeline — mask PII, drop noisy events
+- [ ] Route clean telemetry to destination
+- [ ] Document data flow and pipeline configuration
+
+---
+
+### Phase 3 — SOC Simulation & Dashboard
+> Status: ⏳ Not Started
+
+- [ ] Trigger Conditional Access violation via VPN
+- [ ] Verify event captured and processed through Cribl pipeline
+- [ ] Build SOC dashboard from clean telemetry
+- [ ] Write up findings as a professional case file
+
+---
+
+## Notes
+*This roadmap is a living document — updated as the project
+evolves. Priority and status updated with every significant push.*
