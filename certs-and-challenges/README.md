@@ -12,10 +12,12 @@
 
 ---
 
-### Timus SASE Certified Specialist
+### Timus Certified Specialist
 - **Issuer:** Timus Networks
-- **Issued:** 2026
-- 📄 Certificate coming soon
+- **Issued:** February 24, 2026
+- **Score:** 92.9% (92/99)
+
+![Timus Certified Specialist Certificate](./timus_certified_specialist_certificate.png)
 
 ---
 
