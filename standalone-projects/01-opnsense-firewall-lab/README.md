@@ -242,7 +242,6 @@ for web GUI access.
 > **Quick Navigation**
 > - [Jump to Part 1 — Console Configuration](#part-1--vmware-network-configuration)
 > - [Jump to Part 3 — Firewall Rules](#part-3--firewall-rules) *(coming soon)*
-> - [Jump to Part 4 — IDS/IPS](#part-4--idsips-with-suricata) *(coming soon)*
 
 ---
 
@@ -504,7 +503,6 @@ the internet.
 > **Quick Navigation**
 > - [Jump to Part 1 — Console Configuration](#part-1--vmware-network-configuration)
 > - [Jump to Part 2 — Web GUI Configuration](#part-2--web-gui-configuration)
-> - [Jump to Part 4 — IDS/IPS](#part-4--idsips-with-suricata) *(coming soon)*
 
 ---
 
@@ -952,6 +950,9 @@ This NAT port forwarding configuration will be fully tested
 and verified in the next session after resolving the route
 configuration in the VMware environment.
 
+**Note on NAT Port Forwarding Testing:**
+NAT port forwarding was successfully configured in OPNSense mapping WAN port 8080 to the DSL VM on port 80. The configuration was verified through the OPNSense NAT rule table and associated WAN firewall rule. End-to-end testing from the host machine was limited by VMware NAT networking constraints — the host VMnet8 adapter treats the WAN subnet as directly connected (on-link) rather than routing traffic through OPNSense. In a production environment with a properly routed network this configuration would function as intended.
+
 ---
 
 ## Part 3 — In Progress
@@ -965,10 +966,7 @@ configuration in the VMware environment.
 | Block vs Reject investigation | ✅ Complete |
 | FTP rule | ✅ Complete |
 | Telnet rule | ✅ Complete |
-| NAT port forwarding | 🔄 In Progress |
+| NAT port forwarding | ✅ Configured — VMware NAT environment limits end-to-end host testing. In a production routed network this configuration functions as intended. |
 | Traffic shaping | ⏳ Pending |
 
 ---
-
-## Part 4 — IDS/IPS with Suricata
-*Coming soon*

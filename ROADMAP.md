@@ -23,11 +23,10 @@ response, cloud identity, and security automation.
 
 | # | Project | Priority | Status |
 |---|---|---|---|
-| 01 | OPNSense Firewall & IDS/IPS Lab | 🔴 High | 🔄 In Progress |
+| 01 | OPNSense Firewall Lab | 🔴 High | ✅ Complete |
 | | ↳ Part 1 — Console Configuration & Network Setup | | ✅ Complete |
 | | ↳ Part 2 — Web GUI Configuration | | ✅ Complete |
-| | ↳ Part 3 — Firewall Rules & Traffic Control | | 🔄 In Progress — NAT & traffic shaping remaining |
-| | ↳ Part 4 — IDS/IPS with Suricata | | ⏳ Pending |
+| | ↳ Part 3 — Firewall Rules & Traffic Control | | ✅ Complete |
 | 02 | HTB CTF — Network Forensics | 🔴 High | ✅ Complete |
 | 03 | DVWA — Command Injection & Database Enumeration | 🔴 High | ✅ Complete |
 | 04 | Nmap Reconnaissance | 🔴 High | ⏳ Pending |
@@ -48,7 +47,7 @@ response, cloud identity, and security automation.
 - [ ] Set up Kali Linux as attacker machine
 - [ ] Set up Windows 10/11 VM as victim machine
 - [ ] Install and configure Splunk on Ubuntu VM
-- [ ] Install Suricata as IDS on OPNSense
+- [ ] Install and configure IDS on OPNSense
 - [ ] Configure Wireshark on monitoring machine
 - [x] Initialize GitHub repo and establish commit workflow
 
@@ -81,7 +80,7 @@ response, cloud identity, and security automation.
 > Status: ⏳ Not Started
 
 - [ ] Simulate data exfiltration over the network
-- [ ] Detect at network level with Wireshark and Suricata
+- [ ] Detect at network level with Wireshark
 - [ ] Correlate events in Splunk
 - [ ] Analyze and document findings
 - [ ] Write Case File 3

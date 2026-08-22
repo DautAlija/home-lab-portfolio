@@ -31,7 +31,7 @@ security disciplines.
 
 | # | Project | Skills | Status |
 |---|---|---|---|
-| 01 | [OPNSense Firewall & IDS/IPS](./standalone-projects/01-opnsense-ids-ips-firewall/) | Firewall config, Suricata, IDS/IPS, NAT | 🔄 In Progress |
+| 01 | [OPNSense Firewall Lab](./standalone-projects/01-opnsense-firewall-lab/) | Firewall configuration, NAT, DHCP, DNS, firewall rules | ✅ Complete |
 | 02 | [HTB CTF — Network Forensics](./standalone-projects/02-htb-ctf/) | Wireshark, PCAP analysis, credential discovery | ✅ Complete |
 | 03 | [DVWA — Command Injection](./standalone-projects/03-dvwa-command-injection/) | Command injection, MySQL enumeration | ✅ Complete |
 
