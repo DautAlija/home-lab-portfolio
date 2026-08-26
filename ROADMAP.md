@@ -40,71 +40,67 @@ response, cloud identity, and security automation.
 
 ## Home Lab (On-Prem)
 
-### Phase 0 — Environment Setup
-> Status: 🔄 In Progress
+Built around one concept: Build, Break, Detect, Respond, Harden. Python
+is used throughout every phase below, not just Phase 3.
 
-- [ ] Configure VMware network (attacker, victim, monitoring VMs)
-- [ ] Set up Kali Linux as attacker machine
-- [ ] Set up Windows 10/11 VM as victim machine
-- [ ] Install and configure Splunk on Ubuntu VM
-- [ ] Install and configure IDS on OPNSense
-- [ ] Configure Wireshark on monitoring machine
+### Phase 0 — Environment Setup
+> Status: ✅ Complete
+
+- [x] Design segmented network (OPNSense gateway + isolated VMnet2 LAN)
+- [x] Deploy and configure OPNSense as firewall/router
+- [x] Deploy Kali Linux attacker VM
+- [x] Deploy Windows 11 victim VM
+- [x] Deploy Ubuntu Server monitoring VM
+- [x] Install and configure Splunk Enterprise
+- [x] Assign static IPs and verify full connectivity
+- [x] Take clean baseline snapshots of all four VMs
 - [x] Initialize GitHub repo and establish commit workflow
 
----
-
-### Phase 1 — Reconnaissance
-> Status: ⏳ Not Started
-
-- [ ] Run Nmap scans from Kali against Windows VM
-- [ ] Capture traffic in Wireshark
-- [ ] Ingest logs into Splunk
-- [ ] Analyze and document findings
-- [ ] Write Case File 1
+→ [Full write-up](./home-lab/phase-0-environment-setup/)
 
 ---
 
-### Phase 2 — Brute Force Attack
+### Phase 1 — Full Attack Chain (MITRE ATT&CK)
 > Status: ⏳ Not Started
 
-- [ ] Simulate brute force login using Hydra
-- [ ] Capture failed login events
-- [ ] Build Splunk detection rule for brute force pattern
-- [ ] Use Hashcat to crack captured hashes
-- [ ] Analyze and document findings
-- [ ] Write Case File 2
+- [ ] Map planned attack chain to MITRE ATT&CK tactics and techniques
+- [ ] Execute reconnaissance against the Windows VM from Kali
+- [ ] Achieve initial access / exploitation
+- [ ] Demonstrate privilege escalation and/or lateral movement
+- [ ] Simulate data exfiltration
+- [ ] Document each stage against its ATT&CK technique ID
 
 ---
 
-### Phase 3 — Data Exfiltration
+### Phase 2 — Detection Engineering
 > Status: ⏳ Not Started
 
-- [ ] Simulate data exfiltration over the network
-- [ ] Detect at network level with Wireshark
-- [ ] Correlate events in Splunk
-- [ ] Analyze and document findings
-- [ ] Write Case File 3
+- [ ] Ingest Phase 1 attack telemetry into Splunk
+- [ ] Write Sigma rules for each attack stage
+- [ ] Convert Sigma rules to Splunk SPL detections
+- [ ] Validate detections fire correctly against Phase 1 traffic
+- [ ] Document detection coverage against MITRE ATT&CK
 
 ---
 
-### Phase 4 — AI Automation Layer
+### Phase 3 — Security Automation
 > Status: ⏳ Not Started
 
-- [ ] Build Python script to read Splunk alerts
-- [ ] Integrate Anthropic API for automated log analysis
-- [ ] Auto-generate triage recommendations
+- [ ] Build Python tooling to pull alerts from Splunk
+- [ ] Integrate the Anthropic API for automated alert triage
 - [ ] Auto-generate incident report drafts
-- [ ] Document automation workflow
+- [ ] Auto-generate remediation recommendations
+- [ ] Document automation architecture and workflow
 
 ---
 
-### Phase 5 — Portfolio Website
+### Phase 4 — Hardening & Re-Test
 > Status: ⏳ Not Started
 
-- [ ] Build professional site on GitHub Pages
-- [ ] Present all case files
-- [ ] Document tools, methodology, and findings
-- [ ] Add to LinkedIn, resume, Handshake, Indeed
+- [ ] Apply remediations based on Phase 1–3 findings
+- [ ] Re-run the Phase 1 attack chain against the hardened environment
+- [ ] Confirm detections still fire and/or attacks are blocked
+- [ ] Document before/after security posture
 
 ---
 

@@ -39,9 +39,19 @@ security disciplines.
 
 ## Home Lab
 
-On-prem attack simulation environment using VMware, Kali Linux, OPNSense,
-Splunk, and Suricata. Simulates reconnaissance, brute force, exfiltration,
-and automated threat detection end to end.
+On-prem cybersecurity lab built around one concept: Build, Break,
+Detect, Respond, Harden. Uses VMware, Kali Linux, OPNSense, and Splunk
+to run full attack chains against a segmented network, engineer
+detections from the resulting telemetry, and automate response with
+Python and the Anthropic API — then re-test to prove the fixes hold.
+
+| Phase | Focus | Status |
+|---|---|---|
+| 0 | [Environment Setup](./home-lab/phase-0-environment-setup/) | ✅ Complete |
+| 1 | Attack Chain (MITRE ATT&CK) | ⏳ Planned |
+| 2 | Detection Engineering (Splunk + Sigma) | ⏳ Planned |
+| 3 | Security Automation (Python + Anthropic API) | ⏳ Planned |
+| 4 | Hardening & Re-Test | ⏳ Planned |
 
 → [View Home Lab](./home-lab/)
 
