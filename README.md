@@ -69,3 +69,7 @@ Cribl Stream pipelines.
 ---
 
 *Actively maintained. Full project roadmap [here](./ROADMAP.md).*
+
+*General (non-security) coding projects live separately in
+[Programming Projects](https://github.com/DautAlija/programming-projects),
+kept out of this repo to keep the focus here on security work.*
