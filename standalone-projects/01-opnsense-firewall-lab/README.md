@@ -9,7 +9,6 @@
 > **Quick Navigation**
 > - [Jump to Web GUI Configuration](#web-gui-configuration)
 > - [Jump to Firewall Rules](#firewall-rules)
-> - [Jump to IDS/IPS Configuration](#idsips-configuration)
 
 ---
 
@@ -22,8 +21,7 @@ controlling all traffic between them.
 
 This lab documents the complete configuration process from initial
 VMware network setup through firewall console configuration,
-web GUI access, firewall rules, and IDS/IPS deployment using
-Suricata.
+web GUI access, and firewall rules.
 
 ---
 
@@ -241,7 +239,7 @@ for web GUI access.
 
 > **Quick Navigation**
 > - [Jump to Part 1 — Console Configuration](#part-1--vmware-network-configuration)
-> - [Jump to Part 3 — Firewall Rules](#part-3--firewall-rules) *(coming soon)*
+> - [Jump to Part 3 — Firewall Rules](#part-3--firewall-rules--traffic-control)
 
 ---
 
@@ -955,7 +953,7 @@ NAT port forwarding was successfully configured in OPNSense mapping WAN port 808
 
 ---
 
-## Part 3 — In Progress
+## Part 3 — Summary
 
 | Task | Status |
 |---|---|
